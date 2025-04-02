@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackFlow", "FeedbackFlow\FeedbackFlow.csproj", "{BE6C9322-7C7F-473B-B91C-9825C062622E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE6C9322-7C7F-473B-B91C-9825C062622E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE6C9322-7C7F-473B-B91C-9825C062622E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6C9322-7C7F-473B-B91C-9825C062622E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6C9322-7C7F-473B-B91C-9825C062622E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17E0E4C6-EAF9-48D8-AB6E-C7FF1CBAE64C}
+	EndGlobalSection
+EndGlobal
