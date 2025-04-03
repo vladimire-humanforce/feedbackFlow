@@ -49,7 +49,7 @@ namespace FeedbackFlow
                     LLModel.Mistral_7b_instruct => "mistral.mistral-7b-instruct-v0:2",//7
                     _ => "anthropic.claude-3-haiku-20240307-v1:0"
                 };
-                const string knowledgeBaseId = "NBCQLJVBKO";
+                var knowledgeBaseId = request.Base == KnowledgeBase.Feedback ? "NBCQLJVBKO" : "O8EMU5NEMX";
                 var req = new RetrieveAndGenerateRequest
                 {
                     Input = new RetrieveAndGenerateInput { Text = request.Prompt },

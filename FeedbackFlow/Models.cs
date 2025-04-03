@@ -1,7 +1,7 @@
 ﻿
 namespace FeedbackFlow
 {
-    public record TextPromptRequest(string Prompt, LLModel Model = LLModel.Claude_3_haiku);
+    public record TextPromptRequest(string Prompt, LLModel Model = LLModel.Claude_3_haiku, KnowledgeBase Base = KnowledgeBase.Feedback);
 
     public enum LLModel
     {
@@ -13,5 +13,11 @@ namespace FeedbackFlow
         Nova_lite_v1,
         Nova_micro_v1,
         Mistral_7b_instruct
+    }
+
+    public enum KnowledgeBase
+    {
+        Feedback,
+        NPS
     }
 }
