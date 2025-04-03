@@ -17,6 +17,7 @@ namespace FeedbackFlow
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddSingleton(new AmazonBedrockAgentRuntimeClient());
+            builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
             var app = builder.Build();
 
