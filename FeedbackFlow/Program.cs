@@ -32,9 +32,23 @@ namespace FeedbackFlow
 
             app.UseAuthorization();
 
+            app.MapGet("/", () => "Hello from lambda!");
+            app.MapGet("/ping", () => "pong");
+
             app.MapPost("/prompt", async ([FromServices] AmazonBedrockAgentRuntimeClient client, [FromBody] TextPromptRequest request) =>
             {
-                const string textModelId = "anthropic.claude-3-haiku-20240307-v1:0";
+                var textModelId = request.Model switch
+                {
+                    LLModel.Nova_pro_v1 => "amazon.nova-pro-v1:0",
+                    LLModel.Nova_lite_v1 => "amazon.nova-lite-v1:0",
+                    LLModel.Nova_micro_v1 => "amazon.nova-micro-v1:0",
+                    LLModel.Claude_3_haiku => "anthropic.claude-3-haiku-20240307-v1:0",
+                    LLModel.Claude_3_sonnet => "anthropic.claude-3-sonnet-20240229-v1:0",
+                    LLModel.Claude_3_5_sonnet_v1 => "anthropic.claude-3-5-sonnet-20240620-v1:0",
+                    LLModel.Claude_3_5_sonnet_v2 => "anthropic.claude-3-5-sonnet-20241022-v2:0",
+                    LLModel.Mistral_7b_instruct => "mistral.mistral-7b-instruct-v0:2",
+                    _ => "anthropic.claude-3-haiku-20240307-v1:0"
+                };
                 const string knowledgeBaseId = "NBCQLJVBKO";
                 var req = new RetrieveAndGenerateRequest
                 {
@@ -44,7 +58,7 @@ namespace FeedbackFlow
                         Type = RetrieveAndGenerateType.KNOWLEDGE_BASE,
                         KnowledgeBaseConfiguration = new KnowledgeBaseRetrieveAndGenerateConfiguration
                         {
-                            KnowledgeBaseId = "NBCQLJVBKO",
+                            KnowledgeBaseId = knowledgeBaseId,
                             ModelArn = textModelId,
                             RetrievalConfiguration = new KnowledgeBaseRetrievalConfiguration
                             {
