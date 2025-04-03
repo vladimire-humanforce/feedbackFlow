@@ -39,14 +39,14 @@ namespace FeedbackFlow
             {
                 var textModelId = request.Model switch
                 {
-                    LLModel.Nova_pro_v1 => "amazon.nova-pro-v1:0",
-                    LLModel.Nova_lite_v1 => "amazon.nova-lite-v1:0",
-                    LLModel.Nova_micro_v1 => "amazon.nova-micro-v1:0",
-                    LLModel.Claude_3_haiku => "anthropic.claude-3-haiku-20240307-v1:0",
-                    LLModel.Claude_3_sonnet => "anthropic.claude-3-sonnet-20240229-v1:0",
-                    LLModel.Claude_3_5_sonnet_v1 => "anthropic.claude-3-5-sonnet-20240620-v1:0",
-                    LLModel.Claude_3_5_sonnet_v2 => "anthropic.claude-3-5-sonnet-20241022-v2:0",
-                    LLModel.Mistral_7b_instruct => "mistral.mistral-7b-instruct-v0:2",
+                    LLModel.Nova_pro_v1 => "amazon.nova-pro-v1:0", //4
+                    LLModel.Nova_lite_v1 => "amazon.nova-lite-v1:0", //5
+                    LLModel.Nova_micro_v1 => "amazon.nova-micro-v1:0", //6
+                    LLModel.Claude_3_haiku => "anthropic.claude-3-haiku-20240307-v1:0", //0, default
+                    LLModel.Claude_3_sonnet => "anthropic.claude-3-sonnet-20240229-v1:0",//1
+                    LLModel.Claude_3_5_sonnet_v1 => "anthropic.claude-3-5-sonnet-20240620-v1:0",//2
+                    LLModel.Claude_3_5_sonnet_v2 => "anthropic.claude-3-5-sonnet-20241022-v2:0",//3
+                    LLModel.Mistral_7b_instruct => "mistral.mistral-7b-instruct-v0:2",//7
                     _ => "anthropic.claude-3-haiku-20240307-v1:0"
                 };
                 const string knowledgeBaseId = "NBCQLJVBKO";
@@ -70,6 +70,7 @@ namespace FeedbackFlow
                         }
                     }
                 };
+
                 var result = await client!.RetrieveAndGenerateAsync(req);
                 var q = result.Output.Text!;
                 return Results.Ok(q);
